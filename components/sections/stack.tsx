@@ -20,13 +20,13 @@ export function Stack() {
             {techGroups.map((g) => (
               <div
                 key={g.id}
-                className="flex flex-col gap-6 border-b border-line px-4 py-8 last:border-b-0 md:flex-row md:items-center md:px-10"
+                className="flex flex-col gap-6 border-b border-line px-5 py-7 last:border-b-0 md:px-8"
               >
-                <h3 className="flex shrink-0 items-center gap-2 text-sm text-muted md:w-40">
+                <h3 className="flex items-center gap-2 text-sm text-muted">
                   <Icon name={g.icon} className="size-4 text-brand-text" />
                   {g.label}
                 </h3>
-                <ul className="flex flex-wrap items-center gap-x-9 gap-y-7 md:gap-x-12">
+                <ul className="flex flex-wrap items-center gap-x-9 gap-y-7 md:gap-x-11">
                   {g.items.map((t) => (
                     <li key={t.name} className="stack-item group relative grid place-items-center">
                       <BrandIcon name={t.icon} className="size-8 md:size-9" />

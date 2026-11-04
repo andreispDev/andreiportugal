@@ -2,8 +2,10 @@ import { ChatWidget } from "@/components/chat";
 import { Icon } from "@/components/icon";
 import { Interactions } from "@/components/interactions";
 import { Logo } from "@/components/logo";
+import { About } from "@/components/sections/about";
 import { GithubActivity } from "@/components/sections/github";
 import { Hero } from "@/components/sections/hero";
+import { Interests } from "@/components/sections/interests";
 import { Projects } from "@/components/sections/projects";
 import { Stack } from "@/components/sections/stack";
 import { Timeline } from "@/components/sections/timeline";
@@ -17,7 +19,7 @@ function Footer() {
         <div className="card overflow-hidden p-8 md:p-12" data-reveal>
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_120%_at_100%_0%,rgb(var(--brand-rgb)/0.14),transparent_60%)]"
+            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(70%_120%_at_100%_0%,color-mix(in_srgb,var(--brand-text)_14%,transparent),transparent_60%)]"
           />
           <div className="flex flex-wrap items-end justify-between gap-8">
             <div className="max-w-xl">
@@ -43,11 +45,8 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 text-xs text-subtle">
-          <p className="flex items-center gap-2">
-            <Logo size="size-6" /> © {profile.name}
-          </p>
-          <p>Built with Next.js &amp; Tailwind CSS · Icons by Solar</p>
+        <div className="mt-10 flex items-center gap-2 text-xs text-subtle">
+          <Logo size="size-6" /> © {profile.name}
         </div>
       </div>
     </footer>
@@ -66,14 +65,17 @@ export default function Home() {
           comfortable: <Icon name="maximize-square-3-bold-duotone" />,
           menu: <Icon name="hamburger-menu-linear" />,
           close: <Icon name="close-square-linear" />,
+          palette: <Icon name="palette-round-bold-duotone" />,
         }}
       />
       <main id="main">
         <Hero />
+        <About />
         <Stack />
         <Timeline />
         <Projects />
         <GithubActivity />
+        <Interests />
       </main>
       <Footer />
       <ChatWidget

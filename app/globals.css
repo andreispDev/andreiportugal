@@ -3,28 +3,97 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* ---------- Tokens ---------- */
+/* Palettes: each theme is an 11-step neutral ramp (Tailwind-style 50–950).
+   Light/dark tokens below are derived from whichever ramp is active. */
+:root,
+:root[data-palette="stone"] {
+  --c50: #fafaf9;
+  --c100: #f5f5f4;
+  --c200: #e7e5e4;
+  --c300: #d6d3d1;
+  --c400: #a8a29e;
+  --c500: #78716c;
+  --c600: #57534e;
+  --c700: #44403c;
+  --c800: #292524;
+  --c900: #1c1917;
+  --c950: #0c0a09;
+}
+:root[data-palette="zinc"] {
+  --c50: #fafafa;
+  --c100: #f4f4f5;
+  --c200: #e4e4e7;
+  --c300: #d4d4d8;
+  --c400: #a1a1aa;
+  --c500: #71717a;
+  --c600: #52525b;
+  --c700: #3f3f46;
+  --c800: #27272a;
+  --c900: #18181b;
+  --c950: #09090b;
+}
+:root[data-palette="slate"] {
+  --c50: #f8fafc;
+  --c100: #f1f5f9;
+  --c200: #e2e8f0;
+  --c300: #cbd5e1;
+  --c400: #94a3b8;
+  --c500: #64748b;
+  --c600: #475569;
+  --c700: #334155;
+  --c800: #1e293b;
+  --c900: #0f172a;
+  --c950: #020617;
+}
+:root[data-palette="sage"] {
+  --c50: #f6f7f5;
+  --c100: #eef0ec;
+  --c200: #dde2d9;
+  --c300: #c2cbbd;
+  --c400: #95a38e;
+  --c500: #6d7c66;
+  --c600: #55624f;
+  --c700: #434e3f;
+  --c800: #2c332a;
+  --c900: #1d221c;
+  --c950: #0d100c;
+}
+:root[data-palette="mocha"] {
+  --c50: #faf8f5;
+  --c100: #f4efe8;
+  --c200: #e7ddd0;
+  --c300: #d4c3ad;
+  --c400: #ad9475;
+  --c500: #85694c;
+  --c600: #6a523b;
+  --c700: #543f2e;
+  --c800: #362a20;
+  --c900: #241c16;
+  --c950: #120d0a;
+}
+
 :root {
   color-scheme: light;
-  --bg: #fbfbfa;
-  --bg-alt: #f4f4f2;
+  --bg: var(--c50);
+  --bg-alt: var(--c100);
   --surface: #ffffff;
-  --surface-2: #f6f6f5;
-  --line: #e3e3e0;
-  --line-strong: #cfcfcb;
-  --fg: #161616;
-  --muted: #5c5c5a;
-  --subtle: #6e6e6b;
-  --brand: #167f52;
-  --brand-hover: #116a44;
-  --brand-text: #0b6a3e;
-  --grad-mid: #0f766e;
-  --on-brand: #ffffff;
-  --brand-rgb: 22 127 82;
-  --brand-soft: rgb(22 127 82 / 0.1);
-  --orb-a: rgb(22 127 82 / 0.16);
-  --orb-b: rgb(14 116 144 / 0.1);
-  --orb-c: rgb(21 128 61 / 0.09);
-  --grid: rgb(0 0 0 / 0.045);
+  --surface-2: var(--c100);
+  --line: var(--c200);
+  --line-strong: var(--c300);
+  --fg: var(--c900);
+  --muted: var(--c600);
+  --subtle: color-mix(in oklab, var(--c600) 60%, var(--c500));
+  --brand: var(--c900);
+  --brand-hover: var(--c800);
+  --brand-text: var(--c700);
+  --grad-mid: var(--c500);
+  --on-brand: var(--c50);
+  --brand-soft: color-mix(in srgb, var(--c700) 8%, transparent);
+  --orb-a: color-mix(in srgb, var(--c400) 22%, transparent);
+  --orb-b: color-mix(in srgb, var(--c200) 40%, transparent);
+  --orb-c: color-mix(in srgb, var(--c500) 10%, transparent);
+  --dot: color-mix(in srgb, var(--c900) 16%, transparent);
+  --dot-strong: color-mix(in srgb, var(--c900) 28%, transparent);
   --noise-opacity: 0.05;
   --shadow: 0 1px 0 rgb(0 0 0 / 0.03), 0 12px 32px -16px rgb(0 0 0 / 0.18);
   font-size: 87.5%; /* compact density by default */
@@ -32,26 +101,26 @@
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0a0a0a;
-  --bg-alt: #0d0d0d;
-  --surface: #111111;
-  --surface-2: #161616;
-  --line: #222222;
-  --line-strong: #333333;
-  --fg: #ededed;
-  --muted: #a3a3a3;
-  --subtle: #8f8f8f;
-  --brand: #167f52;
-  --brand-hover: #1b8f5d;
-  --brand-text: #34b277;
-  --grad-mid: #2a9d8f;
-  --on-brand: #ffffff;
-  --brand-rgb: 52 178 119;
-  --brand-soft: rgb(52 178 119 / 0.1);
-  --orb-a: rgb(22 127 82 / 0.2);
-  --orb-b: rgb(15 118 110 / 0.1);
-  --orb-c: rgb(21 128 61 / 0.08);
-  --grid: rgb(255 255 255 / 0.04);
+  --bg: var(--c950);
+  --bg-alt: color-mix(in oklab, var(--c950) 85%, var(--c900));
+  --surface: color-mix(in oklab, var(--c950) 55%, var(--c900));
+  --surface-2: var(--c900);
+  --line: var(--c800);
+  --line-strong: color-mix(in oklab, var(--c800) 70%, var(--c700));
+  --fg: var(--c100);
+  --muted: var(--c400);
+  --subtle: color-mix(in oklab, var(--c400) 55%, var(--c500));
+  --brand: var(--c200);
+  --brand-hover: var(--c300);
+  --brand-text: var(--c300);
+  --grad-mid: var(--c400);
+  --on-brand: var(--c900);
+  --brand-soft: color-mix(in srgb, var(--c300) 8%, transparent);
+  --orb-a: color-mix(in srgb, var(--c500) 16%, transparent);
+  --orb-b: color-mix(in srgb, var(--c600) 12%, transparent);
+  --orb-c: color-mix(in srgb, var(--c400) 6%, transparent);
+  --dot: color-mix(in srgb, var(--c100) 12%, transparent);
+  --dot-strong: color-mix(in srgb, var(--c100) 22%, transparent);
   --noise-opacity: 0.07;
   --shadow: 0 1px 0 rgb(255 255 255 / 0.02), 0 16px 40px -20px rgb(0 0 0 / 0.8);
 }
@@ -103,7 +172,7 @@ body {
 }
 
 ::selection {
-  background: rgb(var(--brand-rgb) / 0.3);
+  background: color-mix(in srgb, var(--brand-text) 30%, transparent);
 }
 
 :focus-visible {
@@ -144,15 +213,31 @@ body {
   contain: strict;
 }
 
-.bg-grid {
+/* Minimal radial dot fields: fade in from the top corners and the bottom. */
+.bg-dots {
   position: absolute;
-  inset: -3.5rem 0 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(var(--grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 75% 80% at 50% 0%, #000 25%, transparent 80%);
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, var(--dot) 1px, transparent 0);
+  background-size: 18px 18px;
+  mask-image:
+    radial-gradient(38% 45% at 100% 0%, #000, transparent 75%),
+    radial-gradient(35% 40% at 0% 100%, #000, transparent 75%),
+    radial-gradient(30% 35% at 0% 20%, rgb(0 0 0 / 0.6), transparent 75%);
+}
+
+/* Portrait: cut-out photo (grain baked in) fading out toward the bottom. */
+.portrait {
+  position: relative;
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 98%);
+}
+
+.portrait-dots {
+  position: absolute;
+  inset: -8% -10% 10%;
+  z-index: -1;
+  background-image: radial-gradient(circle at 1px 1px, var(--dot-strong) 1px, transparent 0);
+  background-size: 12px 12px;
+  mask-image: radial-gradient(circle at 50% 42%, #000 0%, transparent 62%);
 }
 
 .orb {
@@ -213,7 +298,7 @@ body {
 @layer components {
 .container-x {
   width: 100%;
-  max-width: 76rem;
+  max-width: 48rem;
   margin-inline: auto;
   padding-inline: 1rem;
 }
@@ -306,7 +391,7 @@ body {
   inset: -1px;
   border-radius: inherit;
   padding: 1px;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, -20%), rgb(var(--brand-rgb) / 0.55), transparent 45%);
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, -20%), color-mix(in srgb, var(--brand-text) 55%, transparent), transparent 45%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -408,7 +493,7 @@ body {
   overflow: hidden;
 }
 @media (min-width: 768px) {
-  .tl-rail { left: calc(9rem + 0.4375rem); }
+  .tl-rail { left: calc(8rem + 0.4375rem); }
 }
 .tl-fill {
   position: absolute;
@@ -442,18 +527,21 @@ body {
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
 }
-.gh-weeks {
-  --cell: 0.72rem;
-  display: flex;
+/* Fluid: fills the card on desktop, scrolls (newest first in view) on phones. */
+.gh-graph {
+  min-width: 34rem;
+}
+.gh-cols {
+  display: grid;
+  grid-template-columns: repeat(var(--weeks), minmax(0, 1fr));
   gap: 3px;
 }
 .gh-week {
   display: grid;
-  grid-template-rows: repeat(7, var(--cell));
+  grid-template-rows: repeat(7, auto);
   gap: 3px;
 }
 .gh-month {
-  width: var(--cell);
   overflow: visible;
   white-space: nowrap;
   font-size: 0.625rem;
@@ -461,16 +549,18 @@ body {
   color: var(--subtle);
 }
 .gh-cell {
-  display: inline-block;
-  width: var(--cell, 0.72rem);
-  height: var(--cell, 0.72rem);
-  border-radius: 3px;
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 2px;
   background: var(--surface-2);
   box-shadow: inset 0 0 0 1px var(--line);
 }
-.gh-cell[data-l="1"] { background: rgb(var(--brand-rgb) / 0.3); box-shadow: none; }
-.gh-cell[data-l="2"] { background: rgb(var(--brand-rgb) / 0.55); box-shadow: none; }
-.gh-cell[data-l="3"] { background: rgb(var(--brand-rgb) / 0.8); box-shadow: none; }
+.gh-key {
+  width: 0.7rem;
+}
+.gh-cell[data-l="1"] { background: color-mix(in srgb, var(--brand-text) 30%, transparent); box-shadow: none; }
+.gh-cell[data-l="2"] { background: color-mix(in srgb, var(--brand-text) 55%, transparent); box-shadow: none; }
+.gh-cell[data-l="3"] { background: color-mix(in srgb, var(--brand-text) 80%, transparent); box-shadow: none; }
 .gh-cell[data-l="4"] { background: var(--brand-text); box-shadow: none; }
 /* Weeks fill in left to right when the card is revealed. */
 .js [data-reveal] .gh-week {
@@ -484,6 +574,52 @@ body {
     opacity 0.4s var(--ease-out-quint),
     transform 0.5s var(--ease-out-quint);
   transition-delay: calc(var(--w, 0) * 10ms);
+}
+
+/* ---------- Projects carousel ---------- */
+.carousel-track {
+  scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+/* Black and white to match the stone theme. */
+.project-media img {
+  filter: grayscale(1) contrast(1.05);
+}
+.project-cover {
+  background:
+    radial-gradient(circle at 1px 1px, var(--line-strong) 1px, transparent 0) 0 0 / 14px 14px,
+    radial-gradient(60% 80% at 50% 0%, var(--brand-soft), transparent 70%),
+    var(--surface-2);
+}
+
+.interest-icon {
+  transition: transform 0.5s var(--ease-out-quint);
+}
+.card:hover .interest-icon {
+  transform: translateY(-3px) rotate(-8deg) scale(1.08);
+}
+
+/* ---------- Commit line (hero) ---------- */
+.commit-line {
+  color: var(--fg);
+}
+.commit-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw-line 1.8s var(--ease-out-quint) 0.5s forwards;
+}
+.commit-area,
+.commit-dot {
+  opacity: 0;
+  animation: fade-in 0.8s ease 1.6s forwards;
+}
+@keyframes draw-line {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fade-in {
+  to { opacity: 1; }
 }
 
 /* ---------- Chat widget ---------- */

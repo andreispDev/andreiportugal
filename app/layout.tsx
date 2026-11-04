@@ -26,13 +26,13 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfbfa" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#fafaf9" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0a09" },
   ],
 };
 
 // Applied before first paint so theme and density never flash.
-const boot = `(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;var s=localStorage.getItem('density');if(s==='comfortable')d.dataset.density=s;}catch(e){d.dataset.theme='dark'}})();`;
+const boot = `(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.dataset.theme=t;var s=localStorage.getItem('density');if(s==='comfortable')d.dataset.density=s;var p=localStorage.getItem('palette');if(/^(zinc|slate|sage|mocha)$/.test(p))d.dataset.palette=p;}catch(e){d.dataset.theme='dark'}})();`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -53,6 +53,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="orb orb-a" />
           <div className="orb orb-b" />
           <div className="orb orb-c" />
+          <div className="bg-dots" />
           <div className="noise" />
         </div>
         {children}

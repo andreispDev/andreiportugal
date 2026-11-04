@@ -51,6 +51,21 @@ const SOLAR = [
   "gallery-wide-bold-duotone",
   "alt-arrow-down-linear",
   "settings-minimalistic-bold-duotone",
+  "alt-arrow-left-linear",
+  "alt-arrow-right-linear",
+  "gamepad-bold-duotone",
+  "basketball-bold-duotone",
+  "headphones-round-sound-bold-duotone",
+  "magic-stick-3-bold-duotone",
+  "telescope-bold-duotone",
+  "palette-round-bold-duotone",
+  "users-group-rounded-bold-duotone",
+  "pen-new-square-bold-duotone",
+  "case-minimalistic-bold-duotone",
+  "cloud-upload-bold-duotone",
+  "cart-large-2-bold-duotone",
+  "monitor-bold-duotone",
+  "calendar-mark-bold-duotone",
 ];
 
 const BRANDS = [

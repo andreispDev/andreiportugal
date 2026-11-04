@@ -1,8 +1,15 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
+import {
+  useEffect,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
+import { PalettePicker } from "./palette-picker";
 
 const NAV = [
+  { href: "#about", label: "About" },
   { href: "#stack", label: "Stack" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
@@ -10,24 +17,43 @@ const NAV = [
   { href: "#contact", label: "Contact" },
 ];
 
-type Icons = Record<"logo" | "sun" | "moon" | "compact" | "comfortable" | "menu" | "close", ReactNode>;
+type Icons = Record<
+  | "logo"
+  | "sun"
+  | "moon"
+  | "compact"
+  | "comfortable"
+  | "menu"
+  | "close"
+  | "palette",
+  ReactNode
+>;
 
 function flip(apply: () => void) {
   const root = document.documentElement;
   root.classList.add("theme-switching");
   apply();
   // Two frames: let the new styles paint before transitions come back.
-  requestAnimationFrame(() => requestAnimationFrame(() => root.classList.remove("theme-switching")));
+  requestAnimationFrame(() =>
+    requestAnimationFrame(() => root.classList.remove("theme-switching")),
+  );
 }
 
 // <html> data attributes are the source of truth (set before paint by the boot script).
 function subscribe(cb: () => void) {
   const mo = new MutationObserver(cb);
-  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "data-density"] });
+  mo.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme", "data-density"],
+  });
   return () => mo.disconnect();
 }
-const getTheme = () => (document.documentElement.dataset.theme === "light" ? "light" : "dark");
-const getDensity = () => (document.documentElement.dataset.density === "comfortable" ? "comfortable" : "compact");
+const getTheme = () =>
+  document.documentElement.dataset.theme === "light" ? "light" : "dark";
+const getDensity = () =>
+  document.documentElement.dataset.density === "comfortable"
+    ? "comfortable"
+    : "compact";
 
 function save(key: string, value: string) {
   try {
@@ -49,7 +75,8 @@ export function SiteHeader({ icons }: { icons: Icons }) {
 
     const io = new IntersectionObserver(
       (entries) => {
-        for (const e of entries) if (e.isIntersecting) setActive(`#${e.target.id}`);
+        for (const e of entries)
+          if (e.isIntersecting) setActive(`#${e.target.id}`);
       },
       { rootMargin: "-45% 0px -50% 0px" },
     );
@@ -90,13 +117,18 @@ export function SiteHeader({ icons }: { icons: Icons }) {
   return (
     <header
       className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled || open ? "border-line bg-bg/80 backdrop-blur-md" : "border-transparent"
+        scrolled || open
+          ? "border-line bg-bg/80 backdrop-blur-md"
+          : "border-transparent"
       }`}
     >
       <div className="container-x flex h-14 items-center gap-6">
-        <a href="#top" className="flex items-center gap-2 font-medium tracking-tight">
+        <a
+          href="#top"
+          aria-label="Andrei Portugal, back to top"
+          className="flex items-center gap-2 font-medium tracking-tight"
+        >
           {icons.logo}
-          <span className="text-[0.95rem]">andrei.portugal</span>
         </a>
 
         <nav aria-label="Primary" className="hidden md:block">
@@ -122,21 +154,34 @@ export function SiteHeader({ icons }: { icons: Icons }) {
             type="button"
             onClick={toggleDensity}
             className={`${control} hidden sm:inline-flex`}
-            aria-label={density === "compact" ? "Switch to comfortable size" : "Switch to compact size"}
+            aria-label={
+              density === "compact"
+                ? "Switch to comfortable size"
+                : "Switch to compact size"
+            }
             title={density === "compact" ? "Comfortable size" : "Compact size"}
           >
             {density === "compact" ? icons.comfortable : icons.compact}
           </button>
+          <PalettePicker icon={icons.palette} className={control} />
           <button
             type="button"
             onClick={toggleTheme}
             className={control}
-            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            aria-label={
+              theme === "dark"
+                ? "Switch to light theme"
+                : "Switch to dark theme"
+            }
             title={theme === "dark" ? "Light theme" : "Dark theme"}
           >
             {theme === "dark" ? icons.sun : icons.moon}
           </button>
-          <a href="/resume/Ronald-Andrei-Portugal-Resume.pdf" download className="btn btn-primary hidden h-8 sm:inline-flex">
+          <a
+            href="/resume/Ronald-Andrei-Portugal-Resume.pdf"
+            download
+            className="btn btn-primary hidden h-8 sm:inline-flex"
+          >
             Resume
           </a>
           <button
@@ -172,10 +217,18 @@ export function SiteHeader({ icons }: { icons: Icons }) {
           ))}
         </ul>
         <div className="mt-3 flex gap-2 px-1">
-          <button type="button" onClick={toggleDensity} className="btn btn-ghost flex-1">
+          <button
+            type="button"
+            onClick={toggleDensity}
+            className="btn btn-ghost flex-1"
+          >
             {density === "compact" ? "Comfortable size" : "Compact size"}
           </button>
-          <a href="/resume/Ronald-Andrei-Portugal-Resume.pdf" download className="btn btn-primary flex-1">
+          <a
+            href="/resume/Ronald-Andrei-Portugal-Resume.pdf"
+            download
+            className="btn btn-primary flex-1"
+          >
             Download resume
           </a>
         </div>

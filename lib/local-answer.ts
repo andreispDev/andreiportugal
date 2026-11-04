@@ -1,4 +1,4 @@
-import { education, profile, projects, security, techGroups } from "./resume";
+import { clientProjects, education, profile, projects, security, techGroups } from "./resume";
 
 // Offline fallback used when no AI key is configured or the provider fails.
 // Matches the question to a resume topic and answers from the structured data.
@@ -7,6 +7,16 @@ const project = (id: string) => projects.find((p) => p.id === id)!;
 const bullets = (items: string[]) => items.map((i) => `- ${i}`).join("\n");
 
 const topics: { keys: RegExp; answer: () => string }[] = [
+  {
+    keys: /client|freelance|\bpos\b|point.of.sale|funeral|appointment|web ?pages?|landing/,
+    answer: () => `Andrei has built projects for clients:\n${bullets(clientProjects.map((p) => `${p.title}: ${p.blurb}`))}`,
+  },
+  {
+    keys: /hobb|interest|dota|game|gaming|basketball|music|free time|outside work|for fun|automat|future/,
+    answer: () =>
+      `Outside of work Andrei plays computer games (especially Dota 2), plays basketball and listens to music.
+On the tech side he is into automation and digging deeper into how AI will evolve in the future.`,
+  },
   {
     keys: /inventor|stock|forecast/,
     answer: () => {

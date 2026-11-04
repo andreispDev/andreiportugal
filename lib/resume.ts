@@ -28,7 +28,6 @@ export type Project = {
   icon: SolarIconName;
   blurb: string;
   highlights: string[];
-  metrics?: { value: string; label: string }[];
   tech: string[];
   // Public link to a live demo or repository. Leave empty for private systems;
   // the card then offers a walkthrough by email instead.
@@ -51,10 +50,6 @@ export const projects: Project[] = [
       "PostgreSQL row-level security so each office only sees its own data — including through the assistant.",
       "Email code sign-in, idle sign-out, rate limits and tests for data separation, shipped through staging.",
     ],
-    metrics: [
-      { value: "97.5%", label: "right item in top 3" },
-      { value: "83%", label: "questions answered correctly" },
-    ],
     tech: ["Next.js", "React", "TypeScript", "PostgreSQL", "pgvector", "Redis", "Ollama", "Vitest", "GitHub Actions"],
   },
   {
@@ -71,10 +66,6 @@ export const projects: Project[] = [
       "Password and email OTP sign-in, role-based access, account lockout and instantly revocable sessions.",
       "Real-time admin dashboard with notifications, charts, CSV export and account management.",
       "Strict CSP, Docker + HTTPS deployment, automated daily backups, CI and automated tests.",
-    ],
-    metrics: [
-      { value: "AES-256", label: "GCM encryption at rest" },
-      { value: "Daily", label: "automated backups" },
     ],
     tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Socket.IO", "Docker", "Caddy", "nginx"],
   },
@@ -93,11 +84,70 @@ export const projects: Project[] = [
       "Full-page map with category colors, legend, clusters ringed by category share and detail modals.",
       "Self-hosted AI assistant with permission-scoped similarity search, citation checks and prompt logging.",
     ],
-    metrics: [
-      { value: "Lead", label: "frontend across roles" },
-      { value: "RAG", label: "permission-scoped" },
-    ],
     tech: ["Laravel", "Livewire", "Flux UI", "Tailwind CSS", "PostgreSQL", "Leaflet", "ApexCharts", "Ollama", "pgvector"],
+  },
+];
+
+export type AboutPoint = { icon: SolarIconName; tag: string; title: string; body: string };
+
+export const about: AboutPoint[] = [
+  {
+    icon: "palette-round-bold-duotone",
+    tag: "Where it started",
+    title: "Frontend first",
+    body: "I started as a frontend developer, drawn to building modern, slick and visually appealing websites that feel good to use.",
+  },
+  {
+    icon: "server-square-bold-duotone",
+    tag: "2024",
+    title: "Then the backend",
+    body: "I got curious about what happens behind the interface and moved into backend development: APIs, databases and security.",
+  },
+  {
+    icon: "cloud-upload-bold-duotone",
+    tag: "Learning",
+    title: "Into DevOps",
+    body: "After the backend I started learning DevOps: deployments, containers and CI pipelines that ship code safely.",
+  },
+  {
+    icon: "users-group-rounded-bold-duotone",
+    tag: "Now",
+    title: "Building for where I belong",
+    body: "These days I build projects for the organization I'm part of, tools that help us in our day-to-day work.",
+  },
+];
+
+// Freelance work for clients, separate from the systems built at work.
+export const clientProjects: Project[] = [
+  {
+    id: "pos",
+    title: "Point-of-Sale System",
+    role: "Client project",
+    org: "Client",
+    icon: "cart-large-2-bold-duotone",
+    blurb: "A POS system built for a client to handle sales and day-to-day transactions at the counter.",
+    highlights: [],
+    tech: [],
+  },
+  {
+    id: "funeral",
+    title: "Funeral Service Appointment System",
+    role: "Client project",
+    org: "Client",
+    icon: "calendar-mark-bold-duotone",
+    blurb: "An appointment system for a funeral service, so families can book and the staff can manage schedules.",
+    highlights: [],
+    tech: [],
+  },
+  {
+    id: "webpages",
+    title: "Client Web Pages",
+    role: "Client project",
+    org: "Client",
+    icon: "monitor-bold-duotone",
+    blurb: "Websites and landing pages designed and built for clients.",
+    highlights: [],
+    tech: [],
   },
 ];
 
@@ -106,57 +156,44 @@ export type TimelineEntry = {
   when: string;
   title: string;
   place?: string;
+  icon: SolarIconName;
   body: string;
-  tags?: string[];
   current?: boolean;
 };
 
-// Newest first. Years come from Andrei; project details from the resume.
+// Newest first. Roles only; work projects live in the Projects section.
 export const timeline: TimelineEntry[] = [
   {
-    id: "present",
-    when: "Present",
-    title: "Full-Stack Developer — AI-Powered Inventory System",
+    id: "fullstack",
+    when: "2025 – Present",
+    title: "Full-Stack Developer",
     place: "Philippine Navy",
-    body: "Next.js + PostgreSQL inventory for multiple offices, with an AI assistant on a local model that only sees each office's own records.",
-    tags: ["Next.js", "PostgreSQL", "Ollama", "pgvector"],
+    icon: "case-minimalistic-bold-duotone",
+    body: "Grew from maintaining systems and shipping enhancements to building complete solutions end to end.",
     current: true,
   },
   {
-    id: "ai",
-    when: "2025",
-    title: "Adopting AI-assisted development",
-    body: "Brought AI into the daily workflow and started building AI features: local LLMs with Ollama, retrieval (RAG) and pgvector search.",
-    tags: ["Ollama", "RAG", "pgvector"],
+    id: "frontend",
+    when: "2023 – 2025",
+    title: "Frontend Developer",
+    place: "Philippine Navy",
+    icon: "palette-round-bold-duotone",
+    body: "My first role after college: building clean, responsive interfaces and improving the user experience of internal systems.",
   },
   {
-    id: "fullstack",
-    when: "2024",
-    title: "Handled a full-stack project",
-    place: "Awareness Reporting Platform",
-    body: "Owned the stack end to end: React frontend, Node.js API, PostgreSQL, encryption, OTP sign-in and Docker deployment.",
-    tags: ["React", "Node.js", "PostgreSQL", "Docker"],
-  },
-  {
-    id: "hired",
-    when: "2023",
-    title: "Graduated and hired as a frontend developer",
-    place: "Philippine Navy — Monitoring System",
-    body: "Led the frontend: shared page, table and chart components, light and dark themes and the map experience.",
-    tags: ["Laravel", "Livewire", "Tailwind CSS", "Leaflet"],
-  },
-  {
-    id: "interest",
-    when: "2021 – 2022",
-    title: "Got into web development",
-    body: "Started building for the web with HTML, CSS, JavaScript and PHP.",
-    tags: ["HTML", "CSS", "JavaScript", "PHP"],
+    id: "internship",
+    when: "Feb – May 2023",
+    title: "Web Development Intern",
+    place: "Lamina Studios",
+    icon: "pen-new-square-bold-duotone",
+    body: "Sharpened my skills building website pages and worked on Solitary Studios, a startup project that is now a company.",
   },
   {
     id: "college",
     when: "2019 – 2023",
     title: "BS Information Technology",
     place: "Laguna State Polytechnic University, Los Baños",
+    icon: "square-academic-cap-bold-duotone",
     body: "Majored in Web and Mobile Development.",
   },
 ];
@@ -228,6 +265,28 @@ export const techGroups: TechGroup[] = [
   },
 ];
 
+export type Interest = { icon: SolarIconName; title: string; body: string };
+
+export const interests: { curious: Interest[]; offline: Interest[] } = {
+  curious: [
+    {
+      icon: "magic-stick-3-bold-duotone",
+      title: "Automation",
+      body: "Turning repetitive work into processes that run themselves: scripts, CI pipelines and workflows.",
+    },
+    {
+      icon: "telescope-bold-duotone",
+      title: "Where AI is heading",
+      body: "Digging deeper into how AI will evolve, from local models to agents, and what that means for building software.",
+    },
+  ],
+  offline: [
+    { icon: "gamepad-bold-duotone", title: "PC gaming", body: "Mostly Dota 2" },
+    { icon: "basketball-bold-duotone", title: "Basketball", body: "Playing the game" },
+    { icon: "headphones-round-sound-bold-duotone", title: "Music", body: "Always in the background" },
+  ],
+};
+
 export const security = [
   "Role-based access control",
   "OTP sign-in",
@@ -252,7 +311,7 @@ export function resumeContext(): string {
     `Contact: ${profile.email} · GitHub ${profile.github} · LinkedIn ${profile.linkedin}`,
     `Summary: ${profile.summary} ${profile.focus}`,
     "",
-    "Career path: 2019–2023 BS IT at LSPU Los Baños; 2021–2022 got into web development; 2023 graduated and was hired by the Philippine Navy as a frontend developer (Frontend Lead, Monitoring System); 2024 handled a full-stack project (Awareness Reporting Platform); 2025 adopted AI-assisted development and began building AI features with local LLMs; present: Full-Stack Developer on the AI-Powered Inventory System.",
+    "Career path: 2019–2023 BS IT at LSPU Los Baños; internship at Lamina Studios, Feb–May 2023 (built website pages and worked on Solitary Studios, a startup project that is now a company); 2023–2025 Frontend Developer at the Philippine Navy; became interested in backend development in 2024; Full-Stack Developer since 2025, growing from maintaining systems and enhancements to building complete solutions, including projects that help his organization in its day-to-day work. He is still learning and honing his skills to become a full-stack engineer, and is adapting AI into how he works.",
     `Resume PDF: downloadable from this site (${profile.resumePdf}).`,
     "",
     "WORK EXPERIENCE (all at the Philippine Navy):",
@@ -270,6 +329,10 @@ export function resumeContext(): string {
     "  • Awareness: moved report encryption off the main request path; server-side search, filtering and paging; reworked rate limits so personnel sharing one public IP could still submit.",
     "  • Monitoring: fixed cards and table rows lagging behind theme changes by suspending transitions; fixed unreadable dark-mode dropdowns; redesigned sign-in screens and sign-in code email; blocked double submits; added an interface size setting applied before first paint; per-user saved map colors; dashboard widget per category with its own permission; manual testing before merges.",
     "",
+    "CLIENT PROJECTS (freelance):",
+    ...clientProjects.map((p) => `- ${p.title}: ${p.blurb}`),
+    "He has not publicly shipped/launched products; his work is internal systems and client projects.",
+    "",
     "TECHNICAL SKILLS:",
     "Languages: TypeScript, JavaScript, PHP, SQL, HTML, CSS",
     "Frontend: React, Next.js, Livewire, Flux UI, shadcn/ui, Tailwind CSS, Leaflet, ApexCharts",
@@ -282,6 +345,13 @@ export function resumeContext(): string {
     "Tools: Git, GitHub, GitLab, pgAdmin",
     "",
     `EDUCATION: ${education.degree} — ${education.school}, ${education.years}`,
+    "",
+    "INTERESTS (from Andrei, not on the PDF resume):",
+    "- Playing computer games, especially Dota 2",
+    "- Basketball",
+    "- Music",
+    "- Automation: turning repetitive work into automated processes",
+    "- Digging deeper into how AI will evolve in the future",
   );
   return lines.join("\n");
 }
