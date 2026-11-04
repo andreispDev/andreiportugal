@@ -26,11 +26,13 @@ export function Hero() {
             style={{ "--d": 2 } as React.CSSProperties}
           >
             <p>
-              I build modern web solutions and turn my own ideas into useful applications that help me grow.
+              I build modern web solutions and turn my own ideas into useful
+              applications that help me grow.
             </p>
             <p>
               Still learning and honing my craft on the way to becoming a{" "}
-              <span className="text-fg">full-stack engineer</span>, and adapting AI into the way I work.
+              <span className="text-fg">full-stack software engineer</span>, and
+              adapting AI into the way I work.
             </p>
           </div>
 
@@ -38,11 +40,20 @@ export function Hero() {
             className="hero-in mt-8 flex flex-wrap justify-center gap-3 md:justify-start"
             style={{ "--d": 3 } as React.CSSProperties}
           >
-            <a href={profile.resumePdf} download className="btn btn-primary h-10 px-5">
+            <a
+              href={profile.resumePdf}
+              download
+              className="btn btn-primary h-10 px-5"
+            >
               <Icon name="download-minimalistic-bold" /> Download resume
             </a>
-            <button type="button" data-open-chat className="btn btn-ghost h-10 px-5">
-              <Icon name="chat-round-dots-bold-duotone" className="size-4" /> Ask my AI
+            <button
+              type="button"
+              data-open-chat
+              className="btn btn-ghost h-10 px-5"
+            >
+              <Icon name="chat-round-dots-bold-duotone" className="size-4" />{" "}
+              Ask my AI
             </button>
           </div>
 
@@ -51,41 +62,59 @@ export function Hero() {
             style={{ "--d": 4 } as React.CSSProperties}
           >
             <li className="flex items-center gap-1.5">
-              <Icon name="map-point-bold-duotone" className="size-3.5" /> Santa Rosa, Laguna
+              <Icon name="map-point-bold-duotone" className="size-3.5" /> Santa
+              Rosa, Laguna
             </li>
             <li>
-              <a href={profile.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-fg">
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 hover:text-fg"
+              >
                 github <Icon name="arrow-right-up-linear" className="size-3" />
               </a>
             </li>
             <li>
-              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-fg">
-                linkedin <Icon name="arrow-right-up-linear" className="size-3" />
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 hover:text-fg"
+              >
+                linkedin{" "}
+                <Icon name="arrow-right-up-linear" className="size-3" />
               </a>
             </li>
             <li>
-              <a href={`mailto:${profile.email}`} className="flex items-center gap-1 hover:text-fg">
+              <a
+                href={`mailto:${profile.email}`}
+                className="flex items-center gap-1 hover:text-fg"
+              >
                 email <Icon name="arrow-right-up-linear" className="size-3" />
               </a>
             </li>
           </ul>
         </div>
 
-        <div className="hero-in relative order-1 mx-auto w-60 sm:w-72 md:order-2 md:w-full" style={{ "--d": 1 } as React.CSSProperties}>
+        <div
+          className="hero-in relative order-1 mx-auto w-60 sm:w-72 md:order-2 md:w-full"
+          style={{ "--d": 1 } as React.CSSProperties}
+        >
           <div className="relative">
-          <div className="portrait-dots" aria-hidden="true" />
-          <div className="portrait">
-            <Image
-              src={portrait}
-              alt="Portrait of Andrei Portugal"
-              sizes="(min-width: 768px) 18rem, 15rem"
-              preload
-              className="block h-auto w-full"
-            />
-          </div>
-          <span className="absolute bottom-[22%] right-1 rotate-6 rounded-[30%] p-1 shadow-[var(--shadow)] backdrop-blur-sm md:right-0">
-            <Logo size="size-9" />
-          </span>
+            <div className="portrait-dots" aria-hidden="true" />
+            <div className="portrait">
+              <Image
+                src={portrait}
+                alt="Portrait of Andrei Portugal"
+                sizes="(min-width: 768px) 18rem, 15rem"
+                preload
+                className="block h-auto w-full"
+              />
+            </div>
+            <span className="absolute bottom-[22%] right-1 rotate-6 rounded-[30%] p-1 shadow-[var(--shadow)] backdrop-blur-sm md:right-0">
+              <Logo size="size-9" />
+            </span>
           </div>
           <div className="relative -mt-8 px-2">
             <CommitLine />
