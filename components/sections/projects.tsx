@@ -33,7 +33,7 @@ function Cover({ project }: { project: Project }) {
     // Follows the site theme: dark site shows the dark dashboard.
     return (
       <>
-        {/* <Image
+        <Image
           src={dashLight}
           alt="Inventory dashboard, light theme"
           sizes={SIZES}
@@ -48,7 +48,7 @@ function Cover({ project }: { project: Project }) {
           placeholder="blur"
           draggable={false}
           className="hidden size-full object-cover object-left-top dark:block"
-        /> */}
+        />
       </>
     );
   }
