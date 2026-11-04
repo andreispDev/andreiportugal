@@ -16,7 +16,7 @@ export const profile = {
   summary:
     "Full-stack developer with 3 years of experience building web applications for the government sector, including leading frontend work on an internal monitoring system.",
   focus:
-    "Works mainly with React, Next.js, TypeScript, Laravel and PostgreSQL, and is currently learning to build AI features with local LLMs and vector search.",
+    "Works mainly with React, Next.js, TypeScript, Node.js and PostgreSQL. Currently learning how AI and automation can make everyday work easier, building AI features with local LLMs and vector search and trying out new tools that fit into the systems teams already use.",
 };
 
 export type Project = {
@@ -325,7 +325,6 @@ export function resumeContext(): string {
   }
   lines.push(
     "  • Inventory: fixed GitHub Actions type checks that failed because Next.js route types were not generated on a clean machine.",
-    "  • Inventory: assistant evaluated on sample questions — right item in top 3 results 97.5% of the time, 83% of questions answered correctly.",
     "  • Awareness: moved report encryption off the main request path; server-side search, filtering and paging; reworked rate limits so personnel sharing one public IP could still submit.",
     "  • Monitoring: fixed cards and table rows lagging behind theme changes by suspending transitions; fixed unreadable dark-mode dropdowns; redesigned sign-in screens and sign-in code email; blocked double submits; added an interface size setting applied before first paint; per-user saved map colors; dashboard widget per category with its own permission; manual testing before merges.",
     "",
@@ -334,15 +333,17 @@ export function resumeContext(): string {
     "He has not publicly shipped/launched products; his work is internal systems and client projects.",
     "",
     "TECHNICAL SKILLS:",
-    "Languages: TypeScript, JavaScript, PHP, SQL, HTML, CSS",
-    "Frontend: React, Next.js, Livewire, Flux UI, shadcn/ui, Tailwind CSS, Leaflet, ApexCharts",
+    "Languages: TypeScript, JavaScript, SQL, HTML, CSS",
+    "Frontend: React, Next.js, shadcn/ui, Tailwind CSS, Bootstrap 5",
     "Backend: Node.js, Express, Laravel, Socket.IO, REST APIs",
     "Databases: PostgreSQL, MySQL, Redis, Drizzle ORM",
     "AI: Ollama, RAG, pgvector, LLM integration",
     `Security: ${security.join(", ")}`,
     "DevOps: Docker, GitHub Actions, CI/CD pipelines",
-    "Testing: Vitest, Jest, Pest, PHPStan, manual testing",
+    "Testing: Vitest, Jest, manual testing",
     "Tools: Git, GitHub, GitLab, pgAdmin",
+    "",
+    "INTERNSHIP: Intern Web Developer, Solitary Studio's Website Project — Lamina Studios (remote), Feb 2023 – May 2023. Built a website for a start-up game development company showcasing its portfolio of horror games, using HTML5, CSS3, Bootstrap, JavaScript, PHP and MySQL, with images, videos, parallax effects and dropdowns; presented it to the other interns and the supervisor.",
     "",
     `EDUCATION: ${education.degree} — ${education.school}, ${education.years}`,
     "",

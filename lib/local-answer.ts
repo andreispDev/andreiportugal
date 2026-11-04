@@ -21,7 +21,7 @@ On the tech side he is into automation and digging deeper into how AI will evolv
     keys: /inventor|stock|forecast/,
     answer: () => {
       const p = project("inventory");
-      return `${p.title} (${p.role}, ${p.org}, ${p.period}):\n${bullets(p.highlights)}\nIts assistant found the right item in the top 3 results 97.5% of the time and answered 83% of test questions correctly.`;
+      return `${p.title} (${p.role}, ${p.org}, ${p.period}):\n${bullets(p.highlights)}`;
     },
   },
   {
@@ -41,7 +41,7 @@ On the tech side he is into automation and digging deeper into how AI will evolv
   {
     keys: /\bai\b|llm|ollama|rag|vector|assistant|machine/,
     answer: () =>
-      `Andrei has built two AI assistants on self-hosted Ollama models:\n- Inventory system: keyword + pgvector search with links to source records (97.5% top-3 retrieval, 83% correct answers on test questions).\n- Monitoring system: similarity search limited to records each user may see, with citation checks and prompt logging.\nHe is currently learning more about local LLMs and vector search.`,
+      `Andrei has built two AI assistants on self-hosted Ollama models:\n- Inventory system: keyword + pgvector search with links to source records.\n- Monitoring system: similarity search limited to records each user may see, with citation checks and prompt logging.\nHe is currently learning more about local LLMs and vector search.`,
   },
   {
     keys: /secur|auth|otp|sign.?in|rbac|rate/,
@@ -55,7 +55,7 @@ On the tech side he is into automation and digging deeper into how AI will evolv
   {
     keys: /stack|skill|tech|language|framework|tool|use|know/,
     answer: () =>
-      `Andrei mainly works with React, Next.js, TypeScript, Laravel and PostgreSQL.\n${techGroups
+      `Andrei mainly works with React, Next.js, TypeScript, Node.js and PostgreSQL.\n${techGroups
         .map((g) => `- ${g.label}: ${g.items.map((i) => i.name).join(", ")}`)
         .join("\n")}`,
   },
