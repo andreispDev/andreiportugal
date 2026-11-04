@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# andrei.portugal — portfolio
 
-## Getting Started
+Personal portfolio for Ronald Andrei S. Portugal, built with Next.js 16 (App Router, Cache Components) and Tailwind CSS v4.
 
-First, run the development server:
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+All copy lives in `lib/resume.ts`, which also feeds the AI assistant. Edit it there and the hero, stack, timeline, projects and chat stay in sync.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Resume assistant
 
-## Learn More
+`app/api/chat/route.ts` streams answers from any OpenAI-compatible API and is instructed to answer only from the resume. Copy `.env.example` to `.env.local` and set `AI_API_KEY` (a free [Groq](https://console.groq.com/keys) key works out of the box). With no key, it answers offline from the structured resume data (`lib/local-answer.ts`).
 
-To learn more about Next.js, take a look at the following resources:
+## Icons
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Solar icons (via `@iconify-json/solar`) and brand logos (Simple Icons) are compiled into a single sprite, `public/icons.svg`. After adding an icon name to `scripts/gen-icons.mjs`, run:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+node scripts/gen-icons.mjs
+```
